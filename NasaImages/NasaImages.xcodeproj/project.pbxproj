@@ -15,6 +15,8 @@
 		6121F90C26B7477600A1133D /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6121F90A26B7477600A1133D /* RootViewController.xib */; };
 		6121F91226B74AD500A1133D /* ImagesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6121F91126B74AD500A1133D /* ImagesCollectionViewController.swift */; };
 		6121F91426B74B0700A1133D /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6121F91326B74B0700A1133D /* Image.swift */; };
+		6121F91726B750AA00A1133D /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6121F91626B750AA00A1133D /* RequestManager.swift */; };
+		6121F91926B7528300A1133D /* NetworkConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6121F91826B7528300A1133D /* NetworkConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		6121F90A26B7477600A1133D /* RootViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
 		6121F91126B74AD500A1133D /* ImagesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesCollectionViewController.swift; sourceTree = "<group>"; };
 		6121F91326B74B0700A1133D /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		6121F91626B750AA00A1133D /* RequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
+		6121F91826B7528300A1133D /* NetworkConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +64,7 @@
 		6121F8E826B7462300A1133D /* NasaImages */ = {
 			isa = PBXGroup;
 			children = (
+				6121F91526B7507A00A1133D /* api */,
 				6121F91026B74ABE00A1133D /* source_files */,
 				6121F8E926B7462300A1133D /* AppDelegate.swift */,
 				6121F8EB26B7462300A1133D /* SceneDelegate.swift */,
@@ -79,6 +84,15 @@
 				6121F91326B74B0700A1133D /* Image.swift */,
 			);
 			path = source_files;
+			sourceTree = "<group>";
+		};
+		6121F91526B7507A00A1133D /* api */ = {
+			isa = PBXGroup;
+			children = (
+				6121F91626B750AA00A1133D /* RequestManager.swift */,
+				6121F91826B7528300A1133D /* NetworkConstants.swift */,
+			);
+			path = api;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,9 +165,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6121F91926B7528300A1133D /* NetworkConstants.swift in Sources */,
 				6121F91226B74AD500A1133D /* ImagesCollectionViewController.swift in Sources */,
 				6121F8EA26B7462300A1133D /* AppDelegate.swift in Sources */,
 				6121F8EC26B7462300A1133D /* SceneDelegate.swift in Sources */,
+				6121F91726B750AA00A1133D /* RequestManager.swift in Sources */,
 				6121F90B26B7477600A1133D /* RootViewController.swift in Sources */,
 				6121F91426B74B0700A1133D /* Image.swift in Sources */,
 			);

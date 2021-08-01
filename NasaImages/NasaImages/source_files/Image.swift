@@ -9,13 +9,15 @@ import Foundation
 
 class Image {
     
+    private var id: String
     private var title: String?
     private var imagePath: String?
     private var description: String?
     private var photographer: String?
     private var location: String?
     
-    init(title: String?, imagePath: String?, description: String?, photographer: String?, location: String?) {
+    init(id: String, title: String?, imagePath: String?, description: String?, photographer: String?, location: String?) {
+        self.id = id
         self.title = title
         self.imagePath = imagePath
         self.description = description
@@ -24,6 +26,7 @@ class Image {
     }
     
     /* GETTERS */
+    func getId() -> String { return self.id}
     func getTitle() -> String? { return self.title }
     func getImagePath() -> String?  { return self.imagePath }
     func getDescription() -> String? { return self.description }
