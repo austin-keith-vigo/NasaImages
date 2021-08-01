@@ -11,9 +11,9 @@ import UIKit
 class ImagesCollectionViewController: NSObject {
     
     private var collectionView: UICollectionView?
+    private var images: [Image] = []
     
     init(collectionView: UICollectionView) {
         self.collectionView = collectionView
-        self.collectionView?.backgroundColor = .blue
     }
 }

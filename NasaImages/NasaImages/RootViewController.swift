@@ -16,6 +16,16 @@ class RootViewController: UIViewController {
         super.viewDidLoad()
 
         self.imagesCollectionViewController = ImagesCollectionViewController(collectionView: self.imagesCollectionView)
+        RequestManager.getInstance().getImagesBySearchTermForPage(searchTerm: "hello", page: 1, completionHandler: { images, error in
+            
+            if let error = error {
+                print(error)
+                return
+            }
+            
+            print(images.count)
+            
+        })
     }
 
 
