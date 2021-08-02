@@ -88,6 +88,4 @@ class ImageViewController: UIViewController {
     @IBAction func didTouchNavigationBackButton(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
-
-
 }

@@ -35,6 +35,12 @@ class ImagesSearchBarController: NSObject {
             return ""
         }
     }
+    
+    // Dismisses keyboard when val == true
+    func endEditing(_ val: Bool) {
+        guard let searchBar = self.searchBar else { return }
+        searchBar.endEditing(val)
+    }
 }
 
 extension ImagesSearchBarController: UISearchBarDelegate {

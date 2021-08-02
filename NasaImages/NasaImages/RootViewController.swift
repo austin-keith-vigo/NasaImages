@@ -18,6 +18,8 @@ class RootViewController: UIViewController {
     
     
     var images: [Image] = [] // Current list that is being presented
+    var currentPage: Int = 1
+    var isRequestingNewImages: Bool = false // Tracks if a request is being waited on
     
     
     override func viewDidLoad() {
@@ -27,7 +29,7 @@ class RootViewController: UIViewController {
         self.initNavigation()
         
         // Make initial api call for images
-        self.getImages(searchTerm: "")
+        self.getImages(searchTerm: "", page: 1)
     }
     
 
@@ -36,20 +38,34 @@ class RootViewController: UIViewController {
         
         // Init Collection View
         self.imagesCollectionViewController = ImagesCollectionViewController(collectionView: self.imagesCollectionView)
+        
+        // Set Callbacks
         self.imagesCollectionViewController?.didRefresh = {[weak self] in
-            self?.getImages(searchTerm: self?.searchBarController?.getText() ?? "")
+            self?.currentPage = 1
+            self?.getImages(searchTerm: self?.searchBarController?.getText() ?? "", page: 1)
         }
+        
         self.imagesCollectionViewController?.didSelectImage = {[weak self] image in
+            self?.searchBarController?.endEditing(true)
             self?.presentImageViewController(image: image)
         }
+        
+        self.imagesCollectionViewController?.didScrollToBottom = {[weak self] in
+            self?.getNextPage()
+        }
+        
+        self.imagesCollectionViewController?.didScroll = {[weak self] in
+            self?.searchBarController?.endEditing(true)
+        }
+        
         
         // Init Search Bar
         self.searchBarController = ImagesSearchBarController(searchBar: self.searchBar)
         self.searchBarController?.didPressSearch = {[weak self] searchTerm in
-            self?.getImages(searchTerm: searchTerm)
+            self?.currentPage = 1
+            self?.getImages(searchTerm: searchTerm, page: 1)
         }
     }
-    
     
     
     // Initialize navigation controller
@@ -67,20 +83,45 @@ class RootViewController: UIViewController {
     
     
     // Grabs images by page and updates view 
-    func getImages(searchTerm: String) {
-        RequestManager.getInstance().getImagesBySearchTermForPage(searchTerm: searchTerm, page: 1, completionHandler: { images, error in
+    func getImages(searchTerm: String, page: Int) {
+        guard self.isRequestingNewImages == false else { return } // Disallow multiple requests
+        
+        self.isRequestingNewImages = true
+        RequestManager.getInstance().getImagesBySearchTermForPage(searchTerm: searchTerm, page: page, completionHandler: { images, error in
             if let error = error {
                 print("DEBUG AV: \(error)")
+                self.isRequestingNewImages = false
                 return
             }
             
-            // TODO: Implement pagination
-            self.images.removeAll()
-            self.images = images
-            DispatchQueue.main.async {
-                self.imagesCollectionViewController?.setImages(newImages: images)
+            
+            if page == 1 {
+                
+                self.images.removeAll()
+                self.images = images
+                DispatchQueue.main.async {
+                    self.imagesCollectionViewController?.setImages(newImages: images)
+                    self.isRequestingNewImages = false
+                }
+                
+            } else {
+                
+                self.images.append(contentsOf: images)
+                DispatchQueue.main.async {
+                    self.imagesCollectionViewController?.appendImages(newImages: self.images)
+                    self.isRequestingNewImages = false
+                }
+                
             }
+            
         })
+    }
+    
+    // Makes request for next set of images
+    func getNextPage() {
+        guard self.isRequestingNewImages == false else { return }
+        self.currentPage += 1
+        self.getImages(searchTerm: self.searchBarController?.getText() ?? "", page: self.currentPage)
     }
 }
 
