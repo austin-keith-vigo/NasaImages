@@ -19,14 +19,16 @@ class RootViewController: UIViewController {
 
         self.initViews()
         self.initNavigation()
+        
+        // Make initial api call for images
+        self.getImages()
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        // Make initial api call for images
-        self.getImages()
+
     }
     
 

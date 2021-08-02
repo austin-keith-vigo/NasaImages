@@ -103,11 +103,23 @@ class RequestManager: NSObject {
                 if let collection = convertedJsonIntoDict["collection"] as? NSDictionary {
                     if let items = collection["items"] as? [NSDictionary] {
                         for item in items {
+                            
+                            // Parse for preview URL
+                            var imageURL: String = ""
+                            if let links = item["links"] as? [NSDictionary] {
+                                for link in links {
+                                    if let value = link["href"] as? String {
+                                        imageURL = value
+                                    }
+                                }
+                            }
+                            
+                            // Parse for remaing image data
                             if let itemData = item["data"] as? [NSDictionary] {
                                 for data in itemData {
                                     
                                     let id = data["nasa_id"] as? String ?? ""
-                                    let imagePath = "https://images-assets.nasa.gov/image/201105240005HQ/201105240005HQ~thumb.jpg"
+                                    let imagePath = imageURL
                                     let title = data["title"] as? String ?? ""
                                     let description = data["description"] as? String ?? ""
                                     let photographer = data["photographer"] as? String ?? ""
