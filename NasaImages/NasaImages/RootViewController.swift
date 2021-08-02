@@ -38,18 +38,26 @@ class RootViewController: UIViewController {
         
         // Init Collection View
         self.imagesCollectionViewController = ImagesCollectionViewController(collectionView: self.imagesCollectionView)
+        
+        // Set Callbacks
         self.imagesCollectionViewController?.didRefresh = {[weak self] in
             self?.currentPage = 1
             self?.getImages(searchTerm: self?.searchBarController?.getText() ?? "", page: 1)
         }
         
         self.imagesCollectionViewController?.didSelectImage = {[weak self] image in
+            self?.searchBarController?.endEditing(true)
             self?.presentImageViewController(image: image)
         }
         
         self.imagesCollectionViewController?.didScrollToBottom = {[weak self] in
             self?.getNextPage()
         }
+        
+        self.imagesCollectionViewController?.didScroll = {[weak self] in
+            self?.searchBarController?.endEditing(true)
+        }
+        
         
         // Init Search Bar
         self.searchBarController = ImagesSearchBarController(searchBar: self.searchBar)

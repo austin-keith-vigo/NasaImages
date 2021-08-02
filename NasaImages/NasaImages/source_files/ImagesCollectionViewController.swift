@@ -19,6 +19,7 @@ class ImagesCollectionViewController: NSObject {
     // Callbacks
     var didRefresh: (() -> Void)?
     var didSelectImage: ((_ image: Image) -> Void)?
+    var didScroll: (() -> Void)?
     var didScrollToBottom: (() -> Void)?
     
     
@@ -102,6 +103,13 @@ extension ImagesCollectionViewController: UICollectionViewDelegate, UICollection
             print("AV: Did scroll to bottom")
             self.didScrollToBottom?()
         }
+    }
+    
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        
+        // Notify View-Model of user scroll
+        self.didScroll?()
     }
     
     
