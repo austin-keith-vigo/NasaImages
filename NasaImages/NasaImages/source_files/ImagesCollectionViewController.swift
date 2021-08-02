@@ -49,12 +49,25 @@ class ImagesCollectionViewController: NSObject {
     
     // Adds new list of images to current list
     func appendImages(newImages: [Image]) {
+        
+        // Calculate new rows
+        var newIndexPaths: [IndexPath] = []
+        for row in self.images.count...newImages.count - 1 {
+            newIndexPaths.append(IndexPath(row: row, section: 0))
+        }
+        
+        // Update data
         self.images.removeAll()
         self.images = newImages
-        print("DEBUG AV: \(self.images.count)")
-        self.collectionView?.reloadData()
+        
+        
+        // Update collection view
+        self.collectionView?.performBatchUpdates({
+            self.collectionView?.insertItems(at: newIndexPaths)
+        }, completion: nil)
     }
 }
+
 
 /*
  Delegate methods for collection view
