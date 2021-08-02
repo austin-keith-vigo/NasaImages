@@ -32,7 +32,7 @@ class ImagesCollectionViewCell: UICollectionViewCell {
         guard let previewImageView = self.previewImageView else { return }
         
         if let url = URL(string: image.getImagePath() ?? "") {
-            previewImageView.load(url: url)
+            previewImageView.load(url: url, placeholder: nil)
         }
         
     }

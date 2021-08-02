@@ -67,7 +67,7 @@ class ImageViewController: UIViewController {
             self.titleLabel?.text = image.getTitle() ?? ""
             
             if let url = URL(string: image.getImagePath() ?? "") {
-                self.previewImageView?.load(url: url)
+                self.previewImageView?.load(url: url, placeholder: nil)
             }
             
             var photographerStr = ""
