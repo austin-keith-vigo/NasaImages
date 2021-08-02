@@ -114,7 +114,7 @@ class RequestManager: NSObject {
                                 }
                             }
                             
-                            // Parse for remaing image data
+                            // Parse for remaining image data
                             if let itemData = item["data"] as? [NSDictionary] {
                                 for data in itemData {
                                     

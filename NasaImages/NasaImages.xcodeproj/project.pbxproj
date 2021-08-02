@@ -22,6 +22,7 @@
 		61B5D4BD26B7915E005D3E14 /* UIImageView+LoadImageFromURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B5D4BC26B7915E005D3E14 /* UIImageView+LoadImageFromURL.swift */; };
 		61B5D4C026B795C3005D3E14 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B5D4BE26B795C3005D3E14 /* ImageViewController.swift */; };
 		61B5D4C126B795C3005D3E14 /* ImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61B5D4BF26B795C3005D3E14 /* ImageViewController.xib */; };
+		61B5D4C326B7E33C005D3E14 /* ImagesSearchBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B5D4C226B7E33C005D3E14 /* ImagesSearchBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		61B5D4BC26B7915E005D3E14 /* UIImageView+LoadImageFromURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+LoadImageFromURL.swift"; sourceTree = "<group>"; };
 		61B5D4BE26B795C3005D3E14 /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		61B5D4BF26B795C3005D3E14 /* ImageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageViewController.xib; sourceTree = "<group>"; };
+		61B5D4C226B7E33C005D3E14 /* ImagesSearchBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesSearchBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 				61B5D4BC26B7915E005D3E14 /* UIImageView+LoadImageFromURL.swift */,
 				61B5D4BE26B795C3005D3E14 /* ImageViewController.swift */,
 				61B5D4BF26B795C3005D3E14 /* ImageViewController.xib */,
+				61B5D4C226B7E33C005D3E14 /* ImagesSearchBarController.swift */,
 			);
 			path = source_files;
 			sourceTree = "<group>";
@@ -191,6 +194,7 @@
 				6121F90B26B7477600A1133D /* RootViewController.swift in Sources */,
 				6121F91C26B78BA900A1133D /* ImagesCollectionViewCell.swift in Sources */,
 				61B5D4BD26B7915E005D3E14 /* UIImageView+LoadImageFromURL.swift in Sources */,
+				61B5D4C326B7E33C005D3E14 /* ImagesSearchBarController.swift in Sources */,
 				6121F91426B74B0700A1133D /* Image.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

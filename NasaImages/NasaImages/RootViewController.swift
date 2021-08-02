@@ -11,10 +11,14 @@ class RootViewController: UIViewController {
     
     // Outlets
     @IBOutlet weak var searchBar: UISearchBar!
+    var searchBarController: ImagesSearchBarController?
+    
     @IBOutlet weak var imagesCollectionView: UICollectionView!
     var imagesCollectionViewController: ImagesCollectionViewController?
     
+    
     var images: [Image] = [] // Current list that is being presented
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,30 +30,23 @@ class RootViewController: UIViewController {
         self.getImages(searchTerm: "")
     }
     
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-
-    }
-    
 
     // Initialize views
     func initViews() {
+        // Init Collection View
         self.imagesCollectionViewController = ImagesCollectionViewController(collectionView: self.imagesCollectionView)
         self.imagesCollectionViewController?.didRefresh = {[weak self] in
-            self?.getImages(searchTerm: self?.searchBar.text ?? "")
+            self?.getImages(searchTerm: self?.searchBarController?.getText() ?? "")
         }
         self.imagesCollectionViewController?.didSelectImage = {[weak self] image in
             self?.presentImageViewController(image: image)
         }
         
         // Init Search Bar
-        self.searchBar.delegate = self
-        self.searchBar.searchTextField.font = UIFont(name: "HelveticaNeue", size: 17.0)!
-        self.searchBar.searchTextField.textColor = .red
-        self.searchBar.backgroundColor = .clear
-        self.searchBar.searchTextField.backgroundColor = .blue
+        self.searchBarController = ImagesSearchBarController(searchBar: self.searchBar)
+        self.searchBarController?.didPressSearch = {[weak self] searchTerm in
+            self?.getImages(searchTerm: searchTerm)
+        }
     }
     
     
@@ -86,15 +83,3 @@ class RootViewController: UIViewController {
     }
 }
 
-/*
- Search Bar Delegate methods
- */
-extension RootViewController: UISearchBarDelegate {
-
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        if let text = searchBar.text {
-            self.searchBar.endEditing(true)
-            self.getImages(searchTerm: text)
-        }
-    }
-}
