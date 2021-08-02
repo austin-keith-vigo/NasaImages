@@ -18,8 +18,9 @@ class RootViewController: UIViewController {
         super.viewDidLoad()
 
         self.initViews()
-        
+        self.initNavigation()
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -27,6 +28,7 @@ class RootViewController: UIViewController {
         // Make initial api call for images
         self.getImages()
     }
+    
 
     // Initialize views
     func initViews() {
@@ -34,7 +36,25 @@ class RootViewController: UIViewController {
         self.imagesCollectionViewController?.didRefresh = {[weak self] in
             self?.getImages()
         }
+        self.imagesCollectionViewController?.didSelectImage = {[weak self] image in
+            self?.presentImageViewController(image: image)
+        }
     }
+    
+    
+    // Initialize navigation controller
+    func initNavigation() {
+        self.navigationController?.isNavigationBarHidden = true
+    }
+    
+    
+    // Pushes ImageViewController onto navigation stack
+    func presentImageViewController(image: Image) {
+        let imageViewController = ImageViewController()
+        imageViewController.image = image
+        self.navigationController?.pushViewController(imageViewController, animated: true)
+    }
+    
     
     // Grabs images by page and updates view 
     func getImages() {
@@ -52,6 +72,4 @@ class RootViewController: UIViewController {
             }
         })
     }
-
-
 }

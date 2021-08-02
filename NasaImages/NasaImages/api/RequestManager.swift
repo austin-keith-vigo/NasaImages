@@ -107,7 +107,7 @@ class RequestManager: NSObject {
                                 for data in itemData {
                                     
                                     let id = data["nasa_id"] as? String ?? ""
-                                    let imagePath = "TODO"
+                                    let imagePath = "https://images-assets.nasa.gov/image/201105240005HQ/201105240005HQ~thumb.jpg"
                                     let title = data["title"] as? String ?? ""
                                     let description = data["description"] as? String ?? ""
                                     let photographer = data["photographer"] as? String ?? ""

@@ -18,6 +18,7 @@ class ImagesCollectionViewController: NSObject {
     
     // Callbacks
     var didRefresh: (() -> Void)?
+    var didSelectImage: ((_ image: Image) -> Void)?
     
     
     // Initializes collection view
@@ -26,7 +27,7 @@ class ImagesCollectionViewController: NSObject {
         self.collectionView = collectionView
         self.collectionView?.delegate = self
         self.collectionView?.dataSource = self
-        self.collectionView?.register(ImagesCollectionViewCell.self, forCellWithReuseIdentifier: cellId)
+        self.collectionView?.register(UINib.init(nibName: cellId, bundle: nil), forCellWithReuseIdentifier: cellId)
     }
     
     
@@ -58,6 +59,11 @@ extension ImagesCollectionViewController: UICollectionViewDelegate, UICollection
         let image = self.images[indexPath.row]
         cell.setInfo(image: image)
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let image = self.images[indexPath.row]
+        self.didSelectImage?(image)
     }
     
     
