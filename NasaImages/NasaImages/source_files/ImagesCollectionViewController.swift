@@ -19,6 +19,7 @@ class ImagesCollectionViewController: NSObject {
     // Callbacks
     var didRefresh: (() -> Void)?
     var didSelectImage: ((_ image: Image) -> Void)?
+    var didScrollToBottom: (() -> Void)?
     
     
     // Initializes collection view
@@ -44,12 +45,21 @@ class ImagesCollectionViewController: NSObject {
         self.collectionView?.reloadData()
         self.collectionView?.contentOffset = .zero
     }
+    
+    
+    // Adds new list of images to current list
+    func appendImages(newImages: [Image]) {
+        self.images.removeAll()
+        self.images = newImages
+        print("DEBUG AV: \(self.images.count)")
+        self.collectionView?.reloadData()
+    }
 }
 
 /*
  Delegate methods for collection view
  */
-extension ImagesCollectionViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension ImagesCollectionViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.images.count
     }
@@ -65,6 +75,20 @@ extension ImagesCollectionViewController: UICollectionViewDelegate, UICollection
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let image = self.images[indexPath.row]
         self.didSelectImage?(image)
+    }
+    
+
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        // Request next set of images when bottom is reached
+        let height = scrollView.frame.size.height
+        let contentYoffset = scrollView.contentOffset.y
+        let distanceFromBottom = scrollView.contentSize.height - contentYoffset
+        if distanceFromBottom < height {
+            print("AV: Did scroll to bottom")
+            self.didScrollToBottom?()
+        }
     }
     
     
