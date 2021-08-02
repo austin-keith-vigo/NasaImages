@@ -12,22 +12,46 @@ class RootViewController: UIViewController {
     @IBOutlet weak var imagesCollectionView: UICollectionView!
     var imagesCollectionViewController: ImagesCollectionViewController?
     
+    var images: [Image] = [] // Current list that is being presented
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.initViews()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Make initial api call for images
+        self.getImages()
+    }
+
+    // Initialize views
+    func initViews() {
         self.imagesCollectionViewController = ImagesCollectionViewController(collectionView: self.imagesCollectionView)
-        RequestManager.getInstance().getImagesBySearchTermForPage(searchTerm: "hello", page: 1, completionHandler: { images, error in
-            
+        self.imagesCollectionViewController?.didRefresh = {[weak self] in
+            self?.getImages()
+        }
+    }
+    
+    // Grabs images by page and updates view 
+    func getImages() {
+        RequestManager.getInstance().getImagesBySearchTermForPage(searchTerm: "", page: 1, completionHandler: { images, error in
             if let error = error {
-                print(error)
+                print("DEBUG AV: \(error)")
                 return
             }
             
-            print(images.count)
-            
+            // TODO: Implement pagination
+            self.images.removeAll()
+            self.images = images
+            DispatchQueue.main.async {
+                self.imagesCollectionViewController?.setImages(newImages: images)
+            }
         })
     }
-
 
 
 }
