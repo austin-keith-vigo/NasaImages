@@ -33,6 +33,7 @@ class RootViewController: UIViewController {
 
     // Initialize views
     func initViews() {
+        
         // Init Collection View
         self.imagesCollectionViewController = ImagesCollectionViewController(collectionView: self.imagesCollectionView)
         self.imagesCollectionViewController?.didRefresh = {[weak self] in
