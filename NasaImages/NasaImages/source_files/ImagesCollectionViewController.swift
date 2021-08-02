@@ -42,6 +42,7 @@ class ImagesCollectionViewController: NSObject {
         self.images.removeAll()
         self.images = newImages
         self.collectionView?.reloadData()
+        self.collectionView?.contentOffset = .zero
     }
 }
 

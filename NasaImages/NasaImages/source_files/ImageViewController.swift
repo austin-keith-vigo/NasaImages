@@ -44,17 +44,17 @@ class ImageViewController: UIViewController {
         self.previewImageView?.contentMode = .scaleAspectFit
         
         // Init titleLabel
-        self.titleLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 18.0)
+        self.titleLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 18.0)!
         self.titleLabel?.textColor = .white
         self.titleLabel?.numberOfLines = 1
         
         // Init photographerLabel
-        self.photographerLabel?.font = UIFont(name: "HelveticaNeue-Light", size: 15.0)
+        self.photographerLabel?.font = UIFont(name: "HelveticaNeue-Light", size: 15.0)!
         self.photographerLabel?.textColor = .white
         self.titleLabel?.numberOfLines = 1
         
         // Init descriptionLabel
-        self.descriptionLabel?.font = UIFont(name: "HelveticaNeue-Regular", size: 17.0)
+        self.descriptionLabel?.font = UIFont(name: "HelveticaNeue", size: 17.0)!
         self.descriptionLabel?.textColor = .white
         self.descriptionLabel?.numberOfLines = 0
     }
@@ -71,7 +71,7 @@ class ImageViewController: UIViewController {
             }
             
             var photographerStr = ""
-            if let photographer = image.getPhotographer() {
+            if let photographer = image.getPhotographer(), photographer.count > 0 {
                 photographerStr = "Photo By: \(photographer)"
             }
             self.photographerLabel?.text = photographerStr

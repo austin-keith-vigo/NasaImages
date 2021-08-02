@@ -9,6 +9,8 @@ import UIKit
 
 class RootViewController: UIViewController {
     
+    // Outlets
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var imagesCollectionView: UICollectionView!
     var imagesCollectionViewController: ImagesCollectionViewController?
     
@@ -21,7 +23,7 @@ class RootViewController: UIViewController {
         self.initNavigation()
         
         // Make initial api call for images
-        self.getImages()
+        self.getImages(searchTerm: "")
     }
     
     
@@ -36,12 +38,20 @@ class RootViewController: UIViewController {
     func initViews() {
         self.imagesCollectionViewController = ImagesCollectionViewController(collectionView: self.imagesCollectionView)
         self.imagesCollectionViewController?.didRefresh = {[weak self] in
-            self?.getImages()
+            self?.getImages(searchTerm: self?.searchBar.text ?? "")
         }
         self.imagesCollectionViewController?.didSelectImage = {[weak self] image in
             self?.presentImageViewController(image: image)
         }
+        
+        // Init Search Bar
+        self.searchBar.delegate = self
+        self.searchBar.searchTextField.font = UIFont(name: "HelveticaNeue", size: 17.0)!
+        self.searchBar.searchTextField.textColor = .red
+        self.searchBar.backgroundColor = .clear
+        self.searchBar.searchTextField.backgroundColor = .blue
     }
+    
     
     
     // Initialize navigation controller
@@ -59,8 +69,8 @@ class RootViewController: UIViewController {
     
     
     // Grabs images by page and updates view 
-    func getImages() {
-        RequestManager.getInstance().getImagesBySearchTermForPage(searchTerm: "", page: 1, completionHandler: { images, error in
+    func getImages(searchTerm: String) {
+        RequestManager.getInstance().getImagesBySearchTermForPage(searchTerm: searchTerm, page: 1, completionHandler: { images, error in
             if let error = error {
                 print("DEBUG AV: \(error)")
                 return
@@ -73,5 +83,18 @@ class RootViewController: UIViewController {
                 self.imagesCollectionViewController?.setImages(newImages: images)
             }
         })
+    }
+}
+
+/*
+ Search Bar Delegate methods
+ */
+extension RootViewController: UISearchBarDelegate {
+
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if let text = searchBar.text {
+            self.searchBar.endEditing(true)
+            self.getImages(searchTerm: text)
+        }
     }
 }
