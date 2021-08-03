@@ -32,7 +32,7 @@ class ImagesCollectionViewCell: UICollectionViewCell {
         self.previewImageView?.contentMode = .scaleAspectFill
         
         // Init blur background
-        let backgroundImage = UIImage(named: "image-scale-sample-imgscalr.jpeg")
+        let backgroundImage = UIImage(named: "nasa_log.png")
         blurBackgroundImageView.image = backgroundImage
         blurBackgroundImageView.contentMode = .scaleAspectFill
         

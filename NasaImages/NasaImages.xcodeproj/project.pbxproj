@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -26,7 +26,7 @@
 		6152B97126B92B1B0084D41D /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6152B97026B92B1B0084D41D /* Image.swift */; };
 		6152B97426B92BA10084D41D /* NetworkConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6152B97226B92BA10084D41D /* NetworkConstants.swift */; };
 		6152B97526B92BA10084D41D /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6152B97326B92BA10084D41D /* RequestManager.swift */; };
-		6152B97926B9E36B0084D41D /* image-scale-sample-imgscalr.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 6152B97826B9E36B0084D41D /* image-scale-sample-imgscalr.jpeg */; };
+		61F6030B26B9E81400A643AF /* nasa_log.png in Resources */ = {isa = PBXBuildFile; fileRef = 61F6030A26B9E81300A643AF /* nasa_log.png */; };
 		8C0B1CE32E10F58551EF11AF /* Pods_NasaImages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB5A5AD9BABCFA52A6BCADF6 /* Pods_NasaImages.framework */; };
 /* End PBXBuildFile section */
 
@@ -52,7 +52,7 @@
 		6152B97026B92B1B0084D41D /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Image.swift; path = NasaImages/source_files/Image.swift; sourceTree = SOURCE_ROOT; };
 		6152B97226B92BA10084D41D /* NetworkConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkConstants.swift; sourceTree = "<group>"; };
 		6152B97326B92BA10084D41D /* RequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
-		6152B97826B9E36B0084D41D /* image-scale-sample-imgscalr.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "image-scale-sample-imgscalr.jpeg"; path = "../../../../../../Desktop/image-scale-sample-imgscalr.jpeg"; sourceTree = "<group>"; };
+		61F6030A26B9E81300A643AF /* nasa_log.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = nasa_log.png; path = ../../../../../../Desktop/nasa_log.png; sourceTree = "<group>"; };
 		7C3A535FE2E4B26DFB9FD60A /* Pods-NasaImages.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NasaImages.release.xcconfig"; path = "Target Support Files/Pods-NasaImages/Pods-NasaImages.release.xcconfig"; sourceTree = "<group>"; };
 		AB5A5AD9BABCFA52A6BCADF6 /* Pods_NasaImages.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NasaImages.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF0DB93A08ADBBA629ECFE30 /* Pods-NasaImages.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NasaImages.debug.xcconfig"; path = "Target Support Files/Pods-NasaImages/Pods-NasaImages.debug.xcconfig"; sourceTree = "<group>"; };
@@ -113,7 +113,7 @@
 		6121F91526B7507A00A1133D /* supporting_files */ = {
 			isa = PBXGroup;
 			children = (
-				6152B97826B9E36B0084D41D /* image-scale-sample-imgscalr.jpeg */,
+				61F6030A26B9E81300A643AF /* nasa_log.png */,
 				6152B96826B92AC00084D41D /* ImageCache.swift */,
 				6152B96526B92AB70084D41D /* ThemeColors.swift */,
 				6152B96426B92AB70084D41D /* UIColor+hexStringToUIColor.swift */,
@@ -186,7 +186,6 @@
 				BF0DB93A08ADBBA629ECFE30 /* Pods-NasaImages.debug.xcconfig */,
 				7C3A535FE2E4B26DFB9FD60A /* Pods-NasaImages.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -257,9 +256,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6152B97926B9E36B0084D41D /* image-scale-sample-imgscalr.jpeg in Resources */,
 				6152B96D26B92AE20084D41D /* ImageViewController.xib in Resources */,
 				6121F8F626B7462700A1133D /* LaunchScreen.storyboard in Resources */,
+				61F6030B26B9E81400A643AF /* nasa_log.png in Resources */,
 				6121F8F326B7462700A1133D /* Assets.xcassets in Resources */,
 				6152B95626B92A060084D41D /* ImagesCollectionViewCell.xib in Resources */,
 				6152B95026B929E50084D41D /* RootViewController.xib in Resources */,
