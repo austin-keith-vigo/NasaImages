@@ -66,20 +66,8 @@ class ImageViewController: UIViewController {
             
             self.titleLabel?.text = image.getTitle() ?? ""
             
-            // TODO: Implement blur background to indicate image loading
-            if let url = URL(string: image.getImagePath() ?? "") {
-                ImageCache.load(url: url, completionHandler: { image in
-                    if let image = image {
-                        DispatchQueue.main.async {
-                            self.previewImageView?.image = image
-                        }
-                    } else {
-                        self.previewImageView?.image = nil
-                    }
-                })
-            } else {
-                self.previewImageView?.image = nil
-            }
+            let url = URL(string: image.getImagePath() ?? "")
+            self.previewImageView?.sd_setImage(with: url, completed: nil)
             
             var photographerStr = ""
             if let photographer = image.getPhotographer(), photographer.count > 0 {

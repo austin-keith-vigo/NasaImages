@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class ImagesCollectionViewCell: UICollectionViewCell {
     
@@ -45,31 +46,12 @@ class ImagesCollectionViewCell: UICollectionViewCell {
     /*
      Sets values for UIElements presenting data from image object assuming UIElements have been loaded
      */
-    var currentSequence: Int = 0
     func setInfo(image: Image) {
         guard let previewImageView = self.previewImageView else { return }
         
-        // Makes sure the previous request on the reused cell does not appear before the current request
-        self.currentSequence += 1
-        let sequence = self.currentSequence
-        
         // Asynchronously load image from cache or make request to load image
-        // TODO: Implement blur background to indicate image loading
-        if let url = URL(string: image.getImagePath() ?? "") {
-            ImageCache.load(url: url, completionHandler: { image in
-                if let image = image, sequence == self.currentSequence {
-                    DispatchQueue.main.async {
-                        previewImageView.image = image
-                    }
-                } else {
-                    DispatchQueue.main.async {
-                        previewImageView.image = nil
-                    }
-                }
-            })
-        } else {
-            previewImageView.image = nil
-        }
+        let url = URL(string: image.getImagePath() ?? "")
+        previewImageView.sd_setImage(with: url, completed: nil)
         
     }
 
