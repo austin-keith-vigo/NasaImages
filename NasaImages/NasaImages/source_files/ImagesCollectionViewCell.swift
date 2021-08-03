@@ -32,8 +32,22 @@ class ImagesCollectionViewCell: UICollectionViewCell {
     func setInfo(image: Image) {
         guard let previewImageView = self.previewImageView else { return }
         
+        // Asynchronously load image from cache or make request to load image
+        // TODO: Implement blur background to indicate image loading
         if let url = URL(string: image.getImagePath() ?? "") {
-            previewImageView.load(url: url, placeholder: nil)
+            ImageCache.load(url: url, completionHandler: { image in
+                if let image = image {
+                    DispatchQueue.main.async {
+                        previewImageView.image = image
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        previewImageView.image = nil
+                    }
+                }
+            })
+        } else {
+            previewImageView.image = nil
         }
         
     }

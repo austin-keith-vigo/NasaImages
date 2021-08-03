@@ -111,14 +111,11 @@ extension ImagesCollectionViewController: UICollectionViewDelegate, UICollection
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
-        print("DEBUG AV: contentOffset \(scrollView.contentOffset.y)")
-        
         // Request next set of images when bottom is reached
         let height = scrollView.frame.size.height
         let contentYoffset = scrollView.contentOffset.y
         let distanceFromBottom = scrollView.contentSize.height - contentYoffset
         if distanceFromBottom < height && self.images.count > 0 {
-            print("AV: Did scroll to bottom")
             self.didScrollToBottom?()
         }
     }

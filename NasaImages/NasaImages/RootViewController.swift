@@ -76,11 +76,28 @@ class RootViewController: UIViewController {
         // Init Search Bar
         self.searchBarController = ImagesSearchBarController(searchBar: self.searchBar)
         self.searchBarController?.didPressSearch = {[weak self] searchTerm in
-            self?.currentPage = 1
-            self?.getImages(searchTerm: searchTerm, page: 1)
+            self?.handleDidPressSearch(searchTerm: searchTerm)
         }
         
         self.view.backgroundColor = .black
+    }
+    
+    /*
+     Retrieves new list of images and clears cache to make room for next list of images
+     */
+    var previousSearchTerm: String = ""
+    func handleDidPressSearch(searchTerm: String) {
+        guard searchTerm != previousSearchTerm else { return }
+        
+        // Clean up cache of previous list to clear memory foot-print
+        DispatchQueue.global(qos: .background).async {
+            ImageCache.clear()
+        }
+        
+        // Reset collection view back to the top with a new list
+        self.currentPage = 1
+        self.getImages(searchTerm: searchTerm, page: 1)
+        self.previousSearchTerm = searchTerm
     }
 
     

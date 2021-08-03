@@ -1,33 +1,40 @@
 //
-//  UIImageView+LoadImageFromURL.swift
+//  ImageCache.swift
 //  NasaImages
 //
-//  Created by austin vigo on 8/1/21.
+//  Created by austin vigo on 8/2/21.
 //
 
 import Foundation
 import UIKit
 
-extension UIImageView {
-    // Loads image from web asynchronosly and caches it, in case you have to load url
-    // again, it will be loaded from cache if available
-    func load(url: URL, placeholder: UIImage?, cache: URLCache? = nil) {
+class ImageCache {
+    
+    /*
+     Loads image from web asynchronosly and caches it, in case you have to load url
+     again, it will be loaded from cache if available
+     */
+    static func load(url: URL, cache: URLCache? = nil, completionHandler: @escaping (_ image: UIImage?) -> Void){
         let cache = cache ?? URLCache.shared
         let request = URLRequest(url: url)
         if let data = cache.cachedResponse(for: request)?.data, let image = UIImage(data: data) {
-            self.image = image
+            completionHandler(image)
         } else {
-            self.image = placeholder
             URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
                 if let data = data, let response = response, ((response as? HTTPURLResponse)?.statusCode ?? 500) < 300, let image = UIImage(data: data) {
                     let cachedData = CachedURLResponse(response: response, data: data)
                     cache.storeCachedResponse(cachedData, for: request)
-                    DispatchQueue.main.async {
-                        self.image = image
-                    }
+                    completionHandler(image)
                 }
             }).resume()
         }
     }
-
+    
+    /*
+     Clears all cached responses from the image cache to free up space
+     */
+    static func clear(_ cache: URLCache? = nil) {
+        let cache = cache ?? URLCache.shared
+        cache.removeAllCachedResponses()
+    }
 }
