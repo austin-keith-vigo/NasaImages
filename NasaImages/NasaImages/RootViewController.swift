@@ -44,10 +44,15 @@ class RootViewController: UIViewController {
     func initViews() {
         
         // Calculate top padding of content
-        let safeAreaTopPadding = self.view.safeAreaInsets.top
-        let searchBarHeight = self.searchBar.frame.height
-        let topPadding = safeAreaTopPadding + searchBarHeight
-        let edgeInsets = UIEdgeInsets(top: topPadding, left: 0.0, bottom: 0.0, right: 0.0)
+        var topPadding: CGFloat = 0.0
+        if #available(iOS 11.0, *) {
+            let window = UIApplication.shared.windows.first { $0.isKeyWindow }
+            topPadding = window?.safeAreaInsets.top ?? 0.0
+        }
+        
+        let searchBarHeight = CGFloat(50.0)
+        let topEdgeInset = searchBarHeight + topPadding
+        let edgeInsets = UIEdgeInsets(top: topEdgeInset, left: 0.0, bottom: 0.0, right: 0.0)
         
         // Init Collection View
         self.imagesCollectionViewController = ImagesCollectionViewController(collectionView: self.imagesCollectionView,

@@ -38,11 +38,13 @@ class ImagesCollectionViewController: NSObject {
         let screenWidth = screenSize.width
         
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.sectionInset = edgeInsets ?? UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         layout.itemSize = CGSize(width: (screenWidth / 3) - 2.0, height: screenWidth / 3)
         layout.minimumInteritemSpacing = 1.0
-        layout.minimumLineSpacing = 1.0
+        layout.minimumLineSpacing = 2.0
         self.collectionView?.collectionViewLayout = layout
+        self.collectionView?.contentInset = edgeInsets ?? UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        self.collectionView?.automaticallyAdjustsScrollIndicatorInsets = false
         self.edgeInsets = edgeInsets
     }
     
@@ -60,7 +62,8 @@ class ImagesCollectionViewController: NSObject {
         self.collectionView?.reloadData()
         
         // Reset content offset
-        self.collectionView?.contentOffset = CGPoint(x: 0.0, y: -1 * (self.edgeInsets?.top ?? 0.0))
+        self.collectionView?.contentOffset = CGPoint(x: 0.0,
+                                                     y: -1 * (edgeInsets?.top ?? 0))
     }
     
     
@@ -90,6 +93,9 @@ class ImagesCollectionViewController: NSObject {
  Delegate methods for collection view
  */
 extension ImagesCollectionViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.images.count
     }
@@ -110,6 +116,7 @@ extension ImagesCollectionViewController: UICollectionViewDelegate, UICollection
 
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
         
         // Request next set of images when bottom is reached
         let height = scrollView.frame.size.height
