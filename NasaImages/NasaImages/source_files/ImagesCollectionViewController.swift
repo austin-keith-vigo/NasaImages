@@ -14,6 +14,7 @@ class ImagesCollectionViewController: NSObject {
     
     private var collectionView: UICollectionView?
     private var images: [Image] = []
+    private var edgeInsets: UIEdgeInsets?
     
     
     // Callbacks
@@ -24,12 +25,25 @@ class ImagesCollectionViewController: NSObject {
     
     
     // Initializes collection view
-    init(collectionView: UICollectionView) {
+    init(collectionView: UICollectionView, edgeInsets: UIEdgeInsets?) {
         super.init()
         self.collectionView = collectionView
         self.collectionView?.delegate = self
         self.collectionView?.dataSource = self
         self.collectionView?.register(UINib.init(nibName: cellId, bundle: nil), forCellWithReuseIdentifier: cellId)
+        self.collectionView?.backgroundColor = .clear
+        
+        // Set layout of collectionView to minimize spacing
+        let screenSize = UIScreen.main.bounds
+        let screenWidth = screenSize.width
+        
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.sectionInset = edgeInsets ?? UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        layout.itemSize = CGSize(width: (screenWidth / 3) - 2.0, height: screenWidth / 3)
+        layout.minimumInteritemSpacing = 1.0
+        layout.minimumLineSpacing = 1.0
+        self.collectionView?.collectionViewLayout = layout
+        self.edgeInsets = edgeInsets
     }
     
     
@@ -44,7 +58,9 @@ class ImagesCollectionViewController: NSObject {
         self.images.removeAll()
         self.images = newImages
         self.collectionView?.reloadData()
-        self.collectionView?.contentOffset = .zero
+        
+        // Reset content offset
+        self.collectionView?.contentOffset = CGPoint(x: 0.0, y: -1 * (self.edgeInsets?.top ?? 0.0))
     }
     
     
@@ -95,11 +111,13 @@ extension ImagesCollectionViewController: UICollectionViewDelegate, UICollection
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
+        print("DEBUG AV: contentOffset \(scrollView.contentOffset.y)")
+        
         // Request next set of images when bottom is reached
         let height = scrollView.frame.size.height
         let contentYoffset = scrollView.contentOffset.y
         let distanceFromBottom = scrollView.contentSize.height - contentYoffset
-        if distanceFromBottom < height {
+        if distanceFromBottom < height && self.images.count > 0 {
             print("AV: Did scroll to bottom")
             self.didScrollToBottom?()
         }

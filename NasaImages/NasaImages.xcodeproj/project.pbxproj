@@ -23,6 +23,9 @@
 		61B5D4C026B795C3005D3E14 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B5D4BE26B795C3005D3E14 /* ImageViewController.swift */; };
 		61B5D4C126B795C3005D3E14 /* ImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61B5D4BF26B795C3005D3E14 /* ImageViewController.xib */; };
 		61B5D4C326B7E33C005D3E14 /* ImagesSearchBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B5D4C226B7E33C005D3E14 /* ImagesSearchBarController.swift */; };
+		61B5D4C526B892B2005D3E14 /* UISearchBar+SetBackgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B5D4C426B892B2005D3E14 /* UISearchBar+SetBackgroundColor.swift */; };
+		61B5D4C726B893A0005D3E14 /* ThemeColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B5D4C626B893A0005D3E14 /* ThemeColors.swift */; };
+		61B5D4C926B8943A005D3E14 /* UIColor+hexStringToUIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B5D4C826B8943A005D3E14 /* UIColor+hexStringToUIColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +47,9 @@
 		61B5D4BE26B795C3005D3E14 /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		61B5D4BF26B795C3005D3E14 /* ImageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageViewController.xib; sourceTree = "<group>"; };
 		61B5D4C226B7E33C005D3E14 /* ImagesSearchBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesSearchBarController.swift; sourceTree = "<group>"; };
+		61B5D4C426B892B2005D3E14 /* UISearchBar+SetBackgroundColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISearchBar+SetBackgroundColor.swift"; sourceTree = "<group>"; };
+		61B5D4C626B893A0005D3E14 /* ThemeColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeColors.swift; sourceTree = "<group>"; };
+		61B5D4C826B8943A005D3E14 /* UIColor+hexStringToUIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+hexStringToUIColor.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +106,9 @@
 				61B5D4BE26B795C3005D3E14 /* ImageViewController.swift */,
 				61B5D4BF26B795C3005D3E14 /* ImageViewController.xib */,
 				61B5D4C226B7E33C005D3E14 /* ImagesSearchBarController.swift */,
+				61B5D4C426B892B2005D3E14 /* UISearchBar+SetBackgroundColor.swift */,
+				61B5D4C626B893A0005D3E14 /* ThemeColors.swift */,
+				61B5D4C826B8943A005D3E14 /* UIColor+hexStringToUIColor.swift */,
 			);
 			path = source_files;
 			sourceTree = "<group>";
@@ -187,12 +196,15 @@
 			files = (
 				6121F91926B7528300A1133D /* NetworkConstants.swift in Sources */,
 				6121F91226B74AD500A1133D /* ImagesCollectionViewController.swift in Sources */,
+				61B5D4C526B892B2005D3E14 /* UISearchBar+SetBackgroundColor.swift in Sources */,
 				61B5D4C026B795C3005D3E14 /* ImageViewController.swift in Sources */,
+				61B5D4C926B8943A005D3E14 /* UIColor+hexStringToUIColor.swift in Sources */,
 				6121F8EA26B7462300A1133D /* AppDelegate.swift in Sources */,
 				6121F8EC26B7462300A1133D /* SceneDelegate.swift in Sources */,
 				6121F91726B750AA00A1133D /* RequestManager.swift in Sources */,
 				6121F90B26B7477600A1133D /* RootViewController.swift in Sources */,
 				6121F91C26B78BA900A1133D /* ImagesCollectionViewCell.swift in Sources */,
+				61B5D4C726B893A0005D3E14 /* ThemeColors.swift in Sources */,
 				61B5D4BD26B7915E005D3E14 /* UIImageView+LoadImageFromURL.swift in Sources */,
 				61B5D4C326B7E33C005D3E14 /* ImagesSearchBarController.swift in Sources */,
 				6121F91426B74B0700A1133D /* Image.swift in Sources */,
