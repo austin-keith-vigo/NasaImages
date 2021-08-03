@@ -11,21 +11,21 @@
 		6121F8EC26B7462300A1133D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6121F8EB26B7462300A1133D /* SceneDelegate.swift */; };
 		6121F8F326B7462700A1133D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6121F8F226B7462700A1133D /* Assets.xcassets */; };
 		6121F8F626B7462700A1133D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6121F8F426B7462700A1133D /* LaunchScreen.storyboard */; };
-		6121F90B26B7477600A1133D /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6121F90926B7477600A1133D /* RootViewController.swift */; };
-		6121F90C26B7477600A1133D /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6121F90A26B7477600A1133D /* RootViewController.xib */; };
-		6121F91226B74AD500A1133D /* ImagesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6121F91126B74AD500A1133D /* ImagesCollectionViewController.swift */; };
-		6121F91426B74B0700A1133D /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6121F91326B74B0700A1133D /* Image.swift */; };
-		6121F91726B750AA00A1133D /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6121F91626B750AA00A1133D /* RequestManager.swift */; };
-		6121F91926B7528300A1133D /* NetworkConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6121F91826B7528300A1133D /* NetworkConstants.swift */; };
-		6121F91C26B78BA900A1133D /* ImagesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6121F91A26B78BA900A1133D /* ImagesCollectionViewCell.swift */; };
-		6121F91D26B78BA900A1133D /* ImagesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6121F91B26B78BA900A1133D /* ImagesCollectionViewCell.xib */; };
-		6152B94526B91EDF0084D41D /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6152B94426B91EDF0084D41D /* ImageCache.swift */; };
-		61B5D4C026B795C3005D3E14 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B5D4BE26B795C3005D3E14 /* ImageViewController.swift */; };
-		61B5D4C126B795C3005D3E14 /* ImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61B5D4BF26B795C3005D3E14 /* ImageViewController.xib */; };
-		61B5D4C326B7E33C005D3E14 /* ImagesSearchBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B5D4C226B7E33C005D3E14 /* ImagesSearchBarController.swift */; };
-		61B5D4C526B892B2005D3E14 /* UISearchBar+SetBackgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B5D4C426B892B2005D3E14 /* UISearchBar+SetBackgroundColor.swift */; };
-		61B5D4C726B893A0005D3E14 /* ThemeColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B5D4C626B893A0005D3E14 /* ThemeColors.swift */; };
-		61B5D4C926B8943A005D3E14 /* UIColor+hexStringToUIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B5D4C826B8943A005D3E14 /* UIColor+hexStringToUIColor.swift */; };
+		6152B94F26B929E50084D41D /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6152B94D26B929E50084D41D /* RootViewController.swift */; };
+		6152B95026B929E50084D41D /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6152B94E26B929E50084D41D /* RootViewController.xib */; };
+		6152B95526B92A060084D41D /* ImagesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6152B95126B92A060084D41D /* ImagesCollectionViewController.swift */; };
+		6152B95626B92A060084D41D /* ImagesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6152B95226B92A060084D41D /* ImagesCollectionViewCell.xib */; };
+		6152B95826B92A060084D41D /* ImagesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6152B95426B92A060084D41D /* ImagesCollectionViewCell.swift */; };
+		6152B95A26B92A1B0084D41D /* UISearchBar+SetBackgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6152B95926B92A1A0084D41D /* UISearchBar+SetBackgroundColor.swift */; };
+		6152B95C26B92A440084D41D /* ImagesSearchBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6152B95B26B92A440084D41D /* ImagesSearchBarController.swift */; };
+		6152B96626B92AB70084D41D /* UIColor+hexStringToUIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6152B96426B92AB70084D41D /* UIColor+hexStringToUIColor.swift */; };
+		6152B96726B92AB70084D41D /* ThemeColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6152B96526B92AB70084D41D /* ThemeColors.swift */; };
+		6152B96926B92AC00084D41D /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6152B96826B92AC00084D41D /* ImageCache.swift */; };
+		6152B96D26B92AE20084D41D /* ImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6152B96B26B92AE20084D41D /* ImageViewController.xib */; };
+		6152B96E26B92AE20084D41D /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6152B96C26B92AE20084D41D /* ImageViewController.swift */; };
+		6152B97126B92B1B0084D41D /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6152B97026B92B1B0084D41D /* Image.swift */; };
+		6152B97426B92BA10084D41D /* NetworkConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6152B97226B92BA10084D41D /* NetworkConstants.swift */; };
+		6152B97526B92BA10084D41D /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6152B97326B92BA10084D41D /* RequestManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,21 +35,21 @@
 		6121F8F226B7462700A1133D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6121F8F526B7462700A1133D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6121F8F726B7462700A1133D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6121F90926B7477600A1133D /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
-		6121F90A26B7477600A1133D /* RootViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
-		6121F91126B74AD500A1133D /* ImagesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesCollectionViewController.swift; sourceTree = "<group>"; };
-		6121F91326B74B0700A1133D /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
-		6121F91626B750AA00A1133D /* RequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
-		6121F91826B7528300A1133D /* NetworkConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConstants.swift; sourceTree = "<group>"; };
-		6121F91A26B78BA900A1133D /* ImagesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesCollectionViewCell.swift; sourceTree = "<group>"; };
-		6121F91B26B78BA900A1133D /* ImagesCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImagesCollectionViewCell.xib; sourceTree = "<group>"; };
-		6152B94426B91EDF0084D41D /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
-		61B5D4BE26B795C3005D3E14 /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
-		61B5D4BF26B795C3005D3E14 /* ImageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageViewController.xib; sourceTree = "<group>"; };
-		61B5D4C226B7E33C005D3E14 /* ImagesSearchBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesSearchBarController.swift; sourceTree = "<group>"; };
-		61B5D4C426B892B2005D3E14 /* UISearchBar+SetBackgroundColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISearchBar+SetBackgroundColor.swift"; sourceTree = "<group>"; };
-		61B5D4C626B893A0005D3E14 /* ThemeColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeColors.swift; sourceTree = "<group>"; };
-		61B5D4C826B8943A005D3E14 /* UIColor+hexStringToUIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+hexStringToUIColor.swift"; sourceTree = "<group>"; };
+		6152B94D26B929E50084D41D /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RootViewController.swift; path = NasaImages/RootViewController.swift; sourceTree = SOURCE_ROOT; };
+		6152B94E26B929E50084D41D /* RootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RootViewController.xib; path = NasaImages/RootViewController.xib; sourceTree = SOURCE_ROOT; };
+		6152B95126B92A060084D41D /* ImagesCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImagesCollectionViewController.swift; path = NasaImages/source_files/ImagesCollectionViewController.swift; sourceTree = SOURCE_ROOT; };
+		6152B95226B92A060084D41D /* ImagesCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ImagesCollectionViewCell.xib; path = NasaImages/source_files/ImagesCollectionViewCell.xib; sourceTree = SOURCE_ROOT; };
+		6152B95426B92A060084D41D /* ImagesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImagesCollectionViewCell.swift; path = NasaImages/source_files/ImagesCollectionViewCell.swift; sourceTree = SOURCE_ROOT; };
+		6152B95926B92A1A0084D41D /* UISearchBar+SetBackgroundColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UISearchBar+SetBackgroundColor.swift"; path = "NasaImages/source_files/UISearchBar+SetBackgroundColor.swift"; sourceTree = SOURCE_ROOT; };
+		6152B95B26B92A440084D41D /* ImagesSearchBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImagesSearchBarController.swift; path = NasaImages/source_files/ImagesSearchBarController.swift; sourceTree = SOURCE_ROOT; };
+		6152B96426B92AB70084D41D /* UIColor+hexStringToUIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIColor+hexStringToUIColor.swift"; path = "NasaImages/source_files/UIColor+hexStringToUIColor.swift"; sourceTree = SOURCE_ROOT; };
+		6152B96526B92AB70084D41D /* ThemeColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ThemeColors.swift; path = NasaImages/source_files/ThemeColors.swift; sourceTree = SOURCE_ROOT; };
+		6152B96826B92AC00084D41D /* ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageCache.swift; path = NasaImages/source_files/ImageCache.swift; sourceTree = SOURCE_ROOT; };
+		6152B96B26B92AE20084D41D /* ImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ImageViewController.xib; path = NasaImages/source_files/ImageViewController.xib; sourceTree = SOURCE_ROOT; };
+		6152B96C26B92AE20084D41D /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageViewController.swift; path = NasaImages/source_files/ImageViewController.swift; sourceTree = SOURCE_ROOT; };
+		6152B97026B92B1B0084D41D /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Image.swift; path = NasaImages/source_files/Image.swift; sourceTree = SOURCE_ROOT; };
+		6152B97226B92BA10084D41D /* NetworkConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkConstants.swift; sourceTree = "<group>"; };
+		6152B97326B92BA10084D41D /* RequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,15 +82,13 @@
 		6121F8E826B7462300A1133D /* NasaImages */ = {
 			isa = PBXGroup;
 			children = (
-				6121F91526B7507A00A1133D /* api */,
+				6121F91526B7507A00A1133D /* supporting_files */,
 				6121F91026B74ABE00A1133D /* source_files */,
 				6121F8E926B7462300A1133D /* AppDelegate.swift */,
 				6121F8EB26B7462300A1133D /* SceneDelegate.swift */,
 				6121F8F226B7462700A1133D /* Assets.xcassets */,
 				6121F8F426B7462700A1133D /* LaunchScreen.storyboard */,
 				6121F8F726B7462700A1133D /* Info.plist */,
-				6121F90926B7477600A1133D /* RootViewController.swift */,
-				6121F90A26B7477600A1133D /* RootViewController.xib */,
 			);
 			path = NasaImages;
 			sourceTree = "<group>";
@@ -98,28 +96,78 @@
 		6121F91026B74ABE00A1133D /* source_files */ = {
 			isa = PBXGroup;
 			children = (
-				6121F91126B74AD500A1133D /* ImagesCollectionViewController.swift */,
-				6121F91326B74B0700A1133D /* Image.swift */,
-				6121F91A26B78BA900A1133D /* ImagesCollectionViewCell.swift */,
-				6121F91B26B78BA900A1133D /* ImagesCollectionViewCell.xib */,
-				61B5D4BE26B795C3005D3E14 /* ImageViewController.swift */,
-				61B5D4BF26B795C3005D3E14 /* ImageViewController.xib */,
-				61B5D4C226B7E33C005D3E14 /* ImagesSearchBarController.swift */,
-				61B5D4C426B892B2005D3E14 /* UISearchBar+SetBackgroundColor.swift */,
-				61B5D4C626B893A0005D3E14 /* ThemeColors.swift */,
-				61B5D4C826B8943A005D3E14 /* UIColor+hexStringToUIColor.swift */,
-				6152B94426B91EDF0084D41D /* ImageCache.swift */,
+				6152B94826B929640084D41D /* Home */,
 			);
 			path = source_files;
 			sourceTree = "<group>";
 		};
-		6121F91526B7507A00A1133D /* api */ = {
+		6121F91526B7507A00A1133D /* supporting_files */ = {
 			isa = PBXGroup;
 			children = (
-				6121F91626B750AA00A1133D /* RequestManager.swift */,
-				6121F91826B7528300A1133D /* NetworkConstants.swift */,
+				6152B96826B92AC00084D41D /* ImageCache.swift */,
+				6152B96526B92AB70084D41D /* ThemeColors.swift */,
+				6152B96426B92AB70084D41D /* UIColor+hexStringToUIColor.swift */,
+				6152B95D26B92A6D0084D41D /* api */,
+				6152B96F26B92B030084D41D /* models */,
+			);
+			path = supporting_files;
+			sourceTree = "<group>";
+		};
+		6152B94826B929640084D41D /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				6152B96A26B92ACD0084D41D /* ImageInfoSubView */,
+				6152B94D26B929E50084D41D /* RootViewController.swift */,
+				6152B94E26B929E50084D41D /* RootViewController.xib */,
+				6152B94A26B929780084D41D /* CollectionView */,
+				6152B94926B929700084D41D /* SearchBar */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		6152B94926B929700084D41D /* SearchBar */ = {
+			isa = PBXGroup;
+			children = (
+				6152B95B26B92A440084D41D /* ImagesSearchBarController.swift */,
+				6152B95926B92A1A0084D41D /* UISearchBar+SetBackgroundColor.swift */,
+			);
+			path = SearchBar;
+			sourceTree = "<group>";
+		};
+		6152B94A26B929780084D41D /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				6152B95426B92A060084D41D /* ImagesCollectionViewCell.swift */,
+				6152B95226B92A060084D41D /* ImagesCollectionViewCell.xib */,
+				6152B95126B92A060084D41D /* ImagesCollectionViewController.swift */,
+			);
+			path = CollectionView;
+			sourceTree = "<group>";
+		};
+		6152B95D26B92A6D0084D41D /* api */ = {
+			isa = PBXGroup;
+			children = (
+				6152B97226B92BA10084D41D /* NetworkConstants.swift */,
+				6152B97326B92BA10084D41D /* RequestManager.swift */,
 			);
 			path = api;
+			sourceTree = "<group>";
+		};
+		6152B96A26B92ACD0084D41D /* ImageInfoSubView */ = {
+			isa = PBXGroup;
+			children = (
+				6152B96C26B92AE20084D41D /* ImageViewController.swift */,
+				6152B96B26B92AE20084D41D /* ImageViewController.xib */,
+			);
+			path = ImageInfoSubView;
+			sourceTree = "<group>";
+		};
+		6152B96F26B92B030084D41D /* models */ = {
+			isa = PBXGroup;
+			children = (
+				6152B97026B92B1B0084D41D /* Image.swift */,
+			);
+			path = models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -179,11 +227,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				61B5D4C126B795C3005D3E14 /* ImageViewController.xib in Resources */,
+				6152B96D26B92AE20084D41D /* ImageViewController.xib in Resources */,
 				6121F8F626B7462700A1133D /* LaunchScreen.storyboard in Resources */,
 				6121F8F326B7462700A1133D /* Assets.xcassets in Resources */,
-				6121F91D26B78BA900A1133D /* ImagesCollectionViewCell.xib in Resources */,
-				6121F90C26B7477600A1133D /* RootViewController.xib in Resources */,
+				6152B95626B92A060084D41D /* ImagesCollectionViewCell.xib in Resources */,
+				6152B95026B929E50084D41D /* RootViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,20 +242,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6152B94526B91EDF0084D41D /* ImageCache.swift in Sources */,
-				6121F91926B7528300A1133D /* NetworkConstants.swift in Sources */,
-				6121F91226B74AD500A1133D /* ImagesCollectionViewController.swift in Sources */,
-				61B5D4C526B892B2005D3E14 /* UISearchBar+SetBackgroundColor.swift in Sources */,
-				61B5D4C026B795C3005D3E14 /* ImageViewController.swift in Sources */,
-				61B5D4C926B8943A005D3E14 /* UIColor+hexStringToUIColor.swift in Sources */,
+				6152B96926B92AC00084D41D /* ImageCache.swift in Sources */,
+				6152B94F26B929E50084D41D /* RootViewController.swift in Sources */,
+				6152B97526B92BA10084D41D /* RequestManager.swift in Sources */,
 				6121F8EA26B7462300A1133D /* AppDelegate.swift in Sources */,
+				6152B95A26B92A1B0084D41D /* UISearchBar+SetBackgroundColor.swift in Sources */,
+				6152B96726B92AB70084D41D /* ThemeColors.swift in Sources */,
+				6152B97126B92B1B0084D41D /* Image.swift in Sources */,
+				6152B95C26B92A440084D41D /* ImagesSearchBarController.swift in Sources */,
 				6121F8EC26B7462300A1133D /* SceneDelegate.swift in Sources */,
-				6121F91726B750AA00A1133D /* RequestManager.swift in Sources */,
-				6121F90B26B7477600A1133D /* RootViewController.swift in Sources */,
-				6121F91C26B78BA900A1133D /* ImagesCollectionViewCell.swift in Sources */,
-				61B5D4C726B893A0005D3E14 /* ThemeColors.swift in Sources */,
-				61B5D4C326B7E33C005D3E14 /* ImagesSearchBarController.swift in Sources */,
-				6121F91426B74B0700A1133D /* Image.swift in Sources */,
+				6152B96E26B92AE20084D41D /* ImageViewController.swift in Sources */,
+				6152B96626B92AB70084D41D /* UIColor+hexStringToUIColor.swift in Sources */,
+				6152B97426B92BA10084D41D /* NetworkConstants.swift in Sources */,
+				6152B95526B92A060084D41D /* ImagesCollectionViewController.swift in Sources */,
+				6152B95826B92A060084D41D /* ImagesCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
