@@ -28,16 +28,30 @@ class RootViewController: UIViewController {
         self.initViews()
         self.initNavigation()
         
-        // Make initial api call for images
+        // Make initial api call for images and loads imags into cache
         self.getImages(searchTerm: "", page: 1)
+    }
+    
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        // Re-Adjust mask for collection view
     }
     
 
     // Initialize views
     func initViews() {
         
+        // Calculate top padding of content
+        let safeAreaTopPadding = self.view.safeAreaInsets.top
+        let searchBarHeight = self.searchBar.frame.height
+        let topPadding = safeAreaTopPadding + searchBarHeight
+        let edgeInsets = UIEdgeInsets(top: topPadding, left: 0.0, bottom: 0.0, right: 0.0)
+        
         // Init Collection View
-        self.imagesCollectionViewController = ImagesCollectionViewController(collectionView: self.imagesCollectionView)
+        self.imagesCollectionViewController = ImagesCollectionViewController(collectionView: self.imagesCollectionView,
+                                                                             edgeInsets: edgeInsets)
         
         // Set Callbacks
         self.imagesCollectionViewController?.didRefresh = {[weak self] in
@@ -65,7 +79,10 @@ class RootViewController: UIViewController {
             self?.currentPage = 1
             self?.getImages(searchTerm: searchTerm, page: 1)
         }
+        
+        self.view.backgroundColor = .black
     }
+
     
     
     // Initialize navigation controller
@@ -113,9 +130,9 @@ class RootViewController: UIViewController {
                 }
                 
             }
-            
         })
     }
+    
     
     // Makes request for next set of images
     func getNextPage() {

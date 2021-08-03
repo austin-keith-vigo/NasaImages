@@ -23,6 +23,7 @@ class ImagesCollectionViewCell: UICollectionViewCell {
     
     func initViews() {
         self.previewImageView?.isUserInteractionEnabled = false
+        self.previewImageView?.contentMode = .scaleAspectFill
     }
     
     /*

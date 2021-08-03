@@ -20,10 +20,12 @@ class ImagesSearchBarController: NSObject {
         // Init Search Bar
         self.searchBar = searchBar
         self.searchBar?.delegate = self
-        self.searchBar?.searchTextField.font = UIFont(name: "HelveticaNeue", size: 17.0)!
-        self.searchBar?.searchTextField.textColor = .red
-        self.searchBar?.backgroundColor = .clear
-        self.searchBar?.searchTextField.backgroundColor = .blue
+        self.searchBar?.getTextField()?.font = UIFont(name: "HelveticaNeue", size: 17.0)!
+        self.searchBar?.setTextFieldBackgroundColor(ThemeColors.LIGHT_GRAY)
+        self.searchBar?.barTintColor = UIColor.clear
+        self.searchBar?.backgroundColor = UIColor.clear
+        self.searchBar?.isTranslucent = true
+        self.searchBar?.setBackgroundImage(UIImage(), for: .any, barMetrics: .default) // Necessary to make search bar see through
     }
     
     
