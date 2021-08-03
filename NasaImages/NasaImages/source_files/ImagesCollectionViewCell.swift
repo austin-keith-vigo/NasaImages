@@ -13,6 +13,7 @@ class ImagesCollectionViewCell: UICollectionViewCell {
     
     // UI elements
     @IBOutlet weak var previewImageView: UIImageView!
+    @IBOutlet weak var blurBackgroundImageView: UIImageView!
     
     
     override func awakeFromNib() {
@@ -22,16 +23,23 @@ class ImagesCollectionViewCell: UICollectionViewCell {
     }
     
     override func prepareForReuse() {
-        
-        // Remove previous image
-        if let previewImageView = self.previewImageView {
-            previewImageView.image = nil
-        }
+    
     }
     
     func initViews() {
         self.previewImageView?.isUserInteractionEnabled = false
         self.previewImageView?.contentMode = .scaleAspectFill
+        
+        // Init blur background
+        let backgroundImage = UIImage(named: "image-scale-sample-imgscalr.jpeg")
+        blurBackgroundImageView.image = backgroundImage
+        blurBackgroundImageView.contentMode = .scaleAspectFill
+        
+        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.regular)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = blurBackgroundImageView.bounds
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        blurBackgroundImageView.addSubview(blurEffectView)
     }
     
     /*

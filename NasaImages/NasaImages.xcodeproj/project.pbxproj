@@ -26,6 +26,7 @@
 		6152B97126B92B1B0084D41D /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6152B97026B92B1B0084D41D /* Image.swift */; };
 		6152B97426B92BA10084D41D /* NetworkConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6152B97226B92BA10084D41D /* NetworkConstants.swift */; };
 		6152B97526B92BA10084D41D /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6152B97326B92BA10084D41D /* RequestManager.swift */; };
+		6152B97926B9E36B0084D41D /* image-scale-sample-imgscalr.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 6152B97826B9E36B0084D41D /* image-scale-sample-imgscalr.jpeg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		6152B97026B92B1B0084D41D /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Image.swift; path = NasaImages/source_files/Image.swift; sourceTree = SOURCE_ROOT; };
 		6152B97226B92BA10084D41D /* NetworkConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkConstants.swift; sourceTree = "<group>"; };
 		6152B97326B92BA10084D41D /* RequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
+		6152B97826B9E36B0084D41D /* image-scale-sample-imgscalr.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "image-scale-sample-imgscalr.jpeg"; path = "../../../../../../Desktop/image-scale-sample-imgscalr.jpeg"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 		6121F91526B7507A00A1133D /* supporting_files */ = {
 			isa = PBXGroup;
 			children = (
+				6152B97826B9E36B0084D41D /* image-scale-sample-imgscalr.jpeg */,
 				6152B96826B92AC00084D41D /* ImageCache.swift */,
 				6152B96526B92AB70084D41D /* ThemeColors.swift */,
 				6152B96426B92AB70084D41D /* UIColor+hexStringToUIColor.swift */,
@@ -227,6 +230,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6152B97926B9E36B0084D41D /* image-scale-sample-imgscalr.jpeg in Resources */,
 				6152B96D26B92AE20084D41D /* ImageViewController.xib in Resources */,
 				6121F8F626B7462700A1133D /* LaunchScreen.storyboard in Resources */,
 				6121F8F326B7462700A1133D /* Assets.xcassets in Resources */,
