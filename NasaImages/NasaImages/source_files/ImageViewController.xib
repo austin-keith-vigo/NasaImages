@@ -13,6 +13,8 @@
                 <outlet property="navigationBackButton" destination="WeN-S4-ASR" id="TwC-Q0-r3z"/>
                 <outlet property="photographerLabel" destination="BAb-Hz-fb8" id="ZtT-jd-D9S"/>
                 <outlet property="previewImageView" destination="A2o-li-y4t" id="SZW-9v-DiQ"/>
+                <outlet property="scrollView" destination="1fo-H6-18I" id="pcA-RA-NK2"/>
+                <outlet property="scrollViewTopConstraint" destination="ccc-Qc-TvA" id="3dJ-Rk-mQW"/>
                 <outlet property="titleLabel" destination="7N4-zG-iQK" id="SLK-kk-7Qs"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -23,7 +25,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1fo-H6-18I">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <rect key="frame" x="0.0" y="100" width="414" height="796"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U74-XB-MZp">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="1468.5"/>
@@ -96,7 +98,7 @@
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="1fo-H6-18I" secondAttribute="bottom" id="LXI-zb-nqL"/>
                 <constraint firstItem="1fo-H6-18I" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Wwl-dN-frB"/>
-                <constraint firstItem="1fo-H6-18I" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ccc-Qc-TvA"/>
+                <constraint firstItem="1fo-H6-18I" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="100" id="ccc-Qc-TvA"/>
                 <constraint firstItem="1fo-H6-18I" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="zBg-Zg-xbF"/>
             </constraints>
             <point key="canvasLocation" x="137.68115942028987" y="38.839285714285715"/>

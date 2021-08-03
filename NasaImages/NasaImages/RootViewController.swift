@@ -36,7 +36,6 @@ class RootViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        // Re-Adjust mask for collection view
     }
     
 
@@ -115,9 +114,19 @@ class RootViewController: UIViewController {
     
     // Pushes ImageViewController onto navigation stack
     func presentImageViewController(image: Image) {
+        
+        // Configure VC
         let imageViewController = ImageViewController()
         imageViewController.image = image
-        self.navigationController?.pushViewController(imageViewController, animated: true)
+        imageViewController.modalPresentationStyle = .overCurrentContext
+        imageViewController.modalTransitionStyle = .coverVertical
+        
+        // Set Callbacks
+        imageViewController.didPressDismiss = {[weak self] in
+            imageViewController.dismiss(animated: true, completion: nil)
+        }
+        
+        self.present(imageViewController, animated: true, completion: nil)
     }
     
     

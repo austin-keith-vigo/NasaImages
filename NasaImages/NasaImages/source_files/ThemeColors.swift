@@ -9,5 +9,6 @@ import Foundation
 import UIKit
 
 class ThemeColors {
+    static let DARK_GRAY = UIColor.hexStringToUIColor(hex: "#606266")
     static let LIGHT_GRAY = UIColor.hexStringToUIColor(hex: "#81858c")
 }
