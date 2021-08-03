@@ -27,6 +27,7 @@
 		6152B97426B92BA10084D41D /* NetworkConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6152B97226B92BA10084D41D /* NetworkConstants.swift */; };
 		6152B97526B92BA10084D41D /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6152B97326B92BA10084D41D /* RequestManager.swift */; };
 		6152B97926B9E36B0084D41D /* image-scale-sample-imgscalr.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 6152B97826B9E36B0084D41D /* image-scale-sample-imgscalr.jpeg */; };
+		8C0B1CE32E10F58551EF11AF /* Pods_NasaImages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB5A5AD9BABCFA52A6BCADF6 /* Pods_NasaImages.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,9 @@
 		6152B97226B92BA10084D41D /* NetworkConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkConstants.swift; sourceTree = "<group>"; };
 		6152B97326B92BA10084D41D /* RequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
 		6152B97826B9E36B0084D41D /* image-scale-sample-imgscalr.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "image-scale-sample-imgscalr.jpeg"; path = "../../../../../../Desktop/image-scale-sample-imgscalr.jpeg"; sourceTree = "<group>"; };
+		7C3A535FE2E4B26DFB9FD60A /* Pods-NasaImages.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NasaImages.release.xcconfig"; path = "Target Support Files/Pods-NasaImages/Pods-NasaImages.release.xcconfig"; sourceTree = "<group>"; };
+		AB5A5AD9BABCFA52A6BCADF6 /* Pods_NasaImages.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NasaImages.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF0DB93A08ADBBA629ECFE30 /* Pods-NasaImages.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NasaImages.debug.xcconfig"; path = "Target Support Files/Pods-NasaImages/Pods-NasaImages.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C0B1CE32E10F58551EF11AF /* Pods_NasaImages.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,6 +75,8 @@
 			children = (
 				6121F8E826B7462300A1133D /* NasaImages */,
 				6121F8E726B7462300A1133D /* Products */,
+				736A73F63FACB6BEF6E5D978 /* Pods */,
+				F4FF6C5593D22F7B35FD999B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -173,6 +180,24 @@
 			path = models;
 			sourceTree = "<group>";
 		};
+		736A73F63FACB6BEF6E5D978 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BF0DB93A08ADBBA629ECFE30 /* Pods-NasaImages.debug.xcconfig */,
+				7C3A535FE2E4B26DFB9FD60A /* Pods-NasaImages.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		F4FF6C5593D22F7B35FD999B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AB5A5AD9BABCFA52A6BCADF6 /* Pods_NasaImages.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -180,9 +205,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6121F8FA26B7462700A1133D /* Build configuration list for PBXNativeTarget "NasaImages" */;
 			buildPhases = (
+				37E0830A125EB61E945BAA72 /* [CP] Check Pods Manifest.lock */,
 				6121F8E226B7462300A1133D /* Sources */,
 				6121F8E326B7462300A1133D /* Frameworks */,
 				6121F8E426B7462300A1133D /* Resources */,
+				ED25BA78AE71C8BA19AED356 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -240,6 +267,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		37E0830A125EB61E945BAA72 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NasaImages-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ED25BA78AE71C8BA19AED356 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NasaImages/Pods-NasaImages-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NasaImages/Pods-NasaImages-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NasaImages/Pods-NasaImages-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6121F8E226B7462300A1133D /* Sources */ = {
@@ -395,6 +464,7 @@
 		};
 		6121F8FB26B7462700A1133D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BF0DB93A08ADBBA629ECFE30 /* Pods-NasaImages.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -414,6 +484,7 @@
 		};
 		6121F8FC26B7462700A1133D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7C3A535FE2E4B26DFB9FD60A /* Pods-NasaImages.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
