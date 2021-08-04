@@ -69,6 +69,7 @@ class ImageViewController: UIViewController {
         self.contentView.addGestureRecognizer(panGesture)
         self.contentView.backgroundColor = ThemeColors.DARK_BACKGROUND
         self.contentView.layer.cornerRadius = 15.0
+        self.contentView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         self.contentView.clipsToBounds = true
         
         
