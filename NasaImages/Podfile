@@ -8,4 +8,5 @@ target 'NasaImages' do
   # Pods for NasaImages
   platform :ios, '8.0'
   pod 'SDWebImage', '~> 5.0'
+  pod 'SnapKit', '~> 4.0'
 end

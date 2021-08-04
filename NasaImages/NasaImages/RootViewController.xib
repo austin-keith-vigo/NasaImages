@@ -11,7 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RootViewController" customModule="NasaImages" customModuleProvider="target">
             <connections>
                 <outlet property="imagesCollectionView" destination="tw4-48-Pkm" id="OG0-m9-1KB"/>
-                <outlet property="searchBar" destination="fZH-d2-H7p" id="4r7-xg-ThN"/>
+                <outlet property="searchBarTitleView" destination="jmP-fg-4ol" id="goU-tH-rqB"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -30,24 +30,24 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
-                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="fZH-d2-H7p">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jmP-fg-4ol" customClass="SearchBarTitleView" customModule="NasaImages" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="50" id="Qdg-Ib-Guq"/>
+                        <constraint firstAttribute="height" constant="50" id="VKh-9R-Wzx"/>
                     </constraints>
-                    <textInputTraits key="textInputTraits"/>
-                </searchBar>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="fZH-d2-H7p" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="Zbn-La-52T"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="jmP-fg-4ol" secondAttribute="trailing" id="1ci-aI-uhU"/>
+                <constraint firstItem="jmP-fg-4ol" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="40U-I1-irS"/>
+                <constraint firstItem="jmP-fg-4ol" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="bsb-3H-mm3"/>
                 <constraint firstItem="tw4-48-Pkm" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="chi-WG-sB9"/>
-                <constraint firstItem="fZH-d2-H7p" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="fat-q1-Yqa"/>
                 <constraint firstItem="tw4-48-Pkm" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="hM5-Yk-5s0"/>
                 <constraint firstAttribute="bottom" secondItem="tw4-48-Pkm" secondAttribute="bottom" id="hgv-vU-18n"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="tw4-48-Pkm" secondAttribute="trailing" id="jIo-ZD-C1B"/>
-                <constraint firstItem="fZH-d2-H7p" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="xhA-ac-8SY"/>
             </constraints>
             <point key="canvasLocation" x="31.884057971014496" y="75.815217391304358"/>
         </view>
