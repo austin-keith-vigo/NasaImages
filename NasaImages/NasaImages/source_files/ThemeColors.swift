@@ -11,4 +11,5 @@ import UIKit
 class ThemeColors {
     static let DARK_GRAY = UIColor.hexStringToUIColor(hex: "#606266")
     static let LIGHT_GRAY = UIColor.hexStringToUIColor(hex: "#81858c")
+    static let DARK_BACKGROUND = UIColor.hexStringToUIColor(hex: "#1a1a1a")
 }
