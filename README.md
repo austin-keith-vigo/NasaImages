@@ -1,4 +1,4 @@
-## 3rd Partframeworks used:
+## 3rd Party Frameworks Used:
 - SDWebImage - Used for caching and asynchronously loading UIImages
 - Snapkit - Used to programatically define and update constraints 
 
