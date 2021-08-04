@@ -18,16 +18,16 @@ class ImageViewController: UIViewController {
     @IBOutlet weak var photographerLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var scrollViewTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var contentViewTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var scrollIndicatorView: UIView!
     
     
     // Callbacks
     var didPressDismiss: (() -> Void)?
     
     // Variables
-    var previousContentOffsetY: CGFloat?
-    let minTopConstraintConstant: CGFloat = 100.0
-    var previousTopConstraintConstant: CGFloat = 100.0
+    let minTopConstraintConstant: CGFloat = 75.0
     var willDismiss: Bool = false
 
     override func viewDidLoad() {
@@ -41,9 +41,11 @@ class ImageViewController: UIViewController {
     // Prepare UI Elements
     func initViews() {
         
-        // Init blur background
+        // Init background
         self.view.backgroundColor = nil
-        self.scrollView.backgroundColor = ThemeColors.DARK_GRAY
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissSelf))
+        tapGesture.numberOfTouchesRequired = 1
+        self.view.addGestureRecognizer(tapGesture)
         
         
         // Init navigation back button
@@ -55,24 +57,148 @@ class ImageViewController: UIViewController {
         // Init previewImageView
         self.previewImageView?.contentMode = .scaleAspectFit
         
+        
         // Init titleLabel
         self.titleLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 18.0)!
         self.titleLabel?.textColor = .white
         self.titleLabel?.numberOfLines = 1
+        
         
         // Init photographerLabel
         self.photographerLabel?.font = UIFont(name: "HelveticaNeue-Light", size: 15.0)!
         self.photographerLabel?.textColor = .white
         self.titleLabel?.numberOfLines = 1
         
+        
         // Init descriptionLabel
         self.descriptionLabel?.font = UIFont(name: "HelveticaNeue", size: 17.0)!
         self.descriptionLabel?.textColor = .white
         self.descriptionLabel?.numberOfLines = 0
         
+        
+        // Init contentView
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(didPanContentView(_:)))
+        panGesture.minimumNumberOfTouches = 1
+        self.contentView.addGestureRecognizer(panGesture)
+        self.contentView.backgroundColor = ThemeColors.DARK_GRAY
+        self.contentView.layer.cornerRadius = 15.0
+        self.contentView.clipsToBounds = true
+        
+        
+        // Init ScrollIndicatorView
+        self.scrollIndicatorView.layer.cornerRadius = 3.0
+        self.scrollIndicatorView.clipsToBounds = true
+        
+        
         // Init scrollView
-        self.scrollView.delegate = self
-        self.scrollView.decelerationRate = .fast
+        self.scrollView.bounces = false
+        self.scrollView.backgroundColor = nil
+    }
+    
+    
+    // Handles panGesture action for contentView
+    @objc func didPanContentView(_ panGesture: UIPanGestureRecognizer) {
+        switch panGesture.state {
+        case .began:
+            // Do Nothing
+            do {}
+        case .changed:
+            self.handlePanGestureChanged(panGesture)
+        case .ended:
+            self.handlePanGestureEnded(panGesture)
+        case .failed:
+            // Do Nothing
+            do {}
+        case .possible:
+            // Do Nothing
+            do {}
+        case .cancelled:
+            // Do Nothing
+            do {}
+        default:
+            // Do Nothing
+            do {}
+        }
+        
+    }
+    
+    /*
+     Recognized user is panning, will move view up or down
+     */
+    func handlePanGestureChanged(_ panGesture: UIPanGestureRecognizer) {
+        let translationY = panGesture.translation(in: self.contentView).y
+        let direction = getDirectionOfPan(translationY)
+        let distance = abs(abs(self.previousTranslationY) - abs(panGesture.translation(in: self.contentView).y))
+        self.previousTranslationY = translationY
+        
+        switch direction {
+        case -1:
+            self.moveViewUp(distance: distance)
+        case 1:
+            self.moveViewDown(distance: distance)
+        default:
+            // Do nothing
+            do {}
+        }
+        
+        // Check if threshold is passed to dismiss view
+        if translationY > self.minTopConstraintConstant + 150.0 {
+            self.willDismiss = true
+        } else {
+            self.willDismiss = false
+        }
+    }
+    
+    /*
+     Will Reset content view back to its starting position
+     */
+    func handlePanGestureEnded(_ panGesture: UIPanGestureRecognizer) {
+        
+        if self.willDismiss {
+            self.didPressDismiss?()
+            return
+        }
+        
+        self.contentViewTopConstraint.constant = self.minTopConstraintConstant
+        self.contentView.setNeedsLayout()
+    }
+    
+    /*
+     Calculates the direction the user is scrolling
+     -1: scrolling up
+     1: scrolling down
+     0: no change
+     */
+    var previousTranslationY: CGFloat = 0.0
+    func getDirectionOfPan(_ translationY: CGFloat) -> Int {
+        
+        var direction: Int = 0
+        if previousTranslationY > translationY {
+            direction = -1
+        } else if previousTranslationY < translationY {
+            direction = 1
+        } else {
+            direction = 0
+        }
+        
+        return direction
+    }
+    
+
+    // Moves the view up
+    func moveViewUp(distance: CGFloat) {
+        guard self.contentViewTopConstraint.constant >= self.minTopConstraintConstant else { return }
+        var newConstant = self.contentViewTopConstraint.constant - distance
+        if newConstant < self.minTopConstraintConstant { newConstant = self.minTopConstraintConstant }
+        self.contentViewTopConstraint.constant = newConstant
+        self.contentView.setNeedsLayout()
+    }
+    
+    
+    // Moves the view down
+    func moveViewDown(distance: CGFloat) {
+        self.contentViewTopConstraint.constant += distance
+        self.contentView.setNeedsLayout()
     }
     
     
@@ -103,95 +229,9 @@ class ImageViewController: UIViewController {
     @IBAction func didTouchNavigationBackButton(_ sender: Any) {
         self.didPressDismiss?()
     }
-}
-
-extension ImageViewController: UIScrollViewDelegate {
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
-        // Calculate direction user is scrolling
-        let direction = getDirectionOfScroll(self.scrollView.contentOffset.y)
-        
-        // Handle user scroll
-        switch direction {
-        case 1:
-            self.handleScrollUp(scrollView.contentOffset.y)
-        case -1:
-            self.handleScrollDown(scrollView.contentOffset.y)
-        default:
-            // Do nothing
-            do {}
-        
-        }
-        previousContentOffsetY = self.scrollView.contentOffset.y
+    // Dismisses view
+    @objc func dismissSelf() {
+        self.didPressDismiss?()
     }
-    
-    /*
-     Calculates the direction the user is scrolling
-     1: scrolling up
-     -1: scrolling down
-     0: no change
-     */
-    func getDirectionOfScroll(_ contentOffsetY: CGFloat) -> Int {
-        var direction: Int = 0
-        if let previousContentOffsetY = self.previousContentOffsetY {
-            direction = (self.scrollView.contentOffset.y > previousContentOffsetY) ? 1 : -1
-        } else {
-            direction = (self.scrollView.contentOffset.y > 0) ? 1 : -1
-        }
-        return direction
-    }
-    
-    /*
-     Moves the scroll view up on user scroll
-     */
-    func handleScrollUp(_ contentOffsetY: CGFloat) {
-        
-        // Disallow movement if the topConstraint hasn't already been changed
-        if self.scrollViewTopConstraint.constant > self.minTopConstraintConstant {
-            var newConstant = self.scrollViewTopConstraint.constant - contentOffsetY
-            if newConstant < self.minTopConstraintConstant { newConstant = CGFloat(self.minTopConstraintConstant) }
-            self.scrollViewTopConstraint.constant = newConstant
-            self.scrollView.setNeedsLayout()
-            self.scrollView.contentOffset = .zero
-    
-            // Update Variables
-            self.previousTopConstraintConstant = newConstant
-        }
-    }
-    
-    /*
-     Moves the scrollView down on user scroll
-     */
-    func handleScrollDown(_ contentOffsetY: CGFloat) {
-        
-        // Disallow movement if contentOffset is not @ .zero
-        if contentOffsetY < 0 {
-            
-            // Move Scroll View
-            let newConstant = self.scrollViewTopConstraint.constant + (-1 * contentOffsetY)
-            self.scrollViewTopConstraint.constant = newConstant
-            self.scrollView.setNeedsLayout()
-            self.scrollView.contentOffset = .zero
-            
-            // Update Variables
-            self.previousTopConstraintConstant = newConstant
-        }
-    }
-    
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        if !decelerate && scrollViewTopConstraint.constant != self.minTopConstraintConstant  {
-            
-            self.scrollViewTopConstraint.constant = self.minTopConstraintConstant
-            self.scrollView.setNeedsLayout()
-            
-        }
-    }
-    
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        self.scrollViewTopConstraint.constant = self.minTopConstraintConstant
-        self.scrollView.setNeedsLayout()
-    }
-    
-    
 }

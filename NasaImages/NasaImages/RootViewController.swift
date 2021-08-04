@@ -122,9 +122,10 @@ class RootViewController: UIViewController {
         imageViewController.modalTransitionStyle = .coverVertical
         
         // Set Callbacks
-        imageViewController.didPressDismiss = {[weak self] in
+        imageViewController.didPressDismiss = {
             imageViewController.dismiss(animated: true, completion: nil)
         }
+        
         
         self.present(imageViewController, animated: true, completion: nil)
     }
