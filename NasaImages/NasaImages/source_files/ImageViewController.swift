@@ -41,11 +41,20 @@ class ImageViewController: UIViewController {
     // Prepare UI Elements
     func initViews() {
         
+        self.view.backgroundColor = UIColor.clear
+        
         // Init background
-        self.view.backgroundColor = nil
+        let backgroundDismissView = UIView()
+        backgroundDismissView.backgroundColor = UIColor.clear
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissSelf))
         tapGesture.numberOfTouchesRequired = 1
-        self.view.addGestureRecognizer(tapGesture)
+        backgroundDismissView.addGestureRecognizer(tapGesture)
+        self.view.addSubview(backgroundDismissView)
+        self.view.sendSubviewToBack(backgroundDismissView)
+        backgroundDismissView.snp.makeConstraints({ maker in
+            maker.edges.equalToSuperview()
+        })
+
         
         
         // Init previewImageView
