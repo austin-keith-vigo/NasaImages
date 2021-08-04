@@ -83,7 +83,7 @@ class RootViewController: UIViewController {
             self?.handleDidPressSearch(searchTerm: searchTerm)
         }
         
-        self.view.backgroundColor = .black
+        self.view.backgroundColor = ThemeColors.DARK_BACKGROUND
     }
     
     /*
