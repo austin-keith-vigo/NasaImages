@@ -27,15 +27,20 @@ class SearchBarTitleView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        // Setup view from .xib file
         initViews()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        // Setup view from .xib file
         initViews()
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        // Reposition searchBar
+        self.searchBar.frame = self.bounds
     }
     
     
@@ -55,26 +60,80 @@ class SearchBarTitleView: UIView {
         
         self.backgroundColor = .clear
         
-        // Initialize search bar
+        // Initialize subviews
+        self.initSearchBar()
+        self.initShowSearchBarButton()
+        self.initTitleLabel()
+    }
+    
+    /*
+     Initializes properties for search bar
+     Note: Search bar is not constrained, must be updated in layoutSubviews()
+     */
+    func initSearchBar() {
+        
+        // Create
         self.searchBar = UISearchBar(frame: .zero)
+        self.searchBar.delegate = self
+        
+        // Constrain Search Bar
+        self.addSubview(self.searchBar)
+        self.searchBar.frame = self.frame
+        self.searchBar.isHidden = true
+        
+        
+        // Customize Appearence
         self.searchBar.getTextField()?.font = UIFont(name: "HelveticaNeue", size: 17.0)!
         self.searchBar.setTextFieldBackgroundColor(ThemeColors.LIGHT_GRAY)
         self.searchBar.barTintColor = UIColor.clear
         self.searchBar.backgroundColor = UIColor.clear
         self.searchBar.isTranslucent = true
         self.searchBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .default) // Necessary to make search bar see through
-        self.addSubview(self.searchBar)
-        self.searchBar.snp.makeConstraints({ maker in
-            maker.top.bottom.leading.trailing.equalToSuperview()
-        })
-        self.searchBar.isHidden = true
-        self.searchBar.delegate = self
+
+        
+        // Allow search of empty string
         self.searchBar.getTextField()?.enablesReturnKeyAutomatically = false
         
         
-        // Initialize show searchBarButton
+        // Configure searchBar for animation
+        self.searchBar.layer.anchorPoint = CGPoint(x: 0.90, y: 0.5)
+        
+    }
+    
+    /*
+     Initialize Title Label
+     */
+    func initTitleLabel() {
+        
+        // Create
+        self.titleLabel = UILabel()
+        
+        
+        // Constrain
+        self.addSubview(self.titleLabel)
+        self.titleLabel.snp.makeConstraints({ maker in
+            maker.leading.equalToSuperview().offset(25.0)
+            maker.centerY.equalToSuperview()
+            maker.trailing.equalTo(self.showSearchBarButton.snp.leading).offset(-15.0)
+        })
+        
+        
+        // Customize appearence
+        self.titleLabel.text = "All"
+        self.titleLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 33.0)!
+        self.titleLabel.textColor = .white
+        self.titleLabel.backgroundColor = .clear
+        self.titleLabel.numberOfLines = 1
+        self.titleLabel.lineBreakMode = .byTruncatingTail
+    }
+    
+    /*
+     Initialize Search Bar Button
+     */
+    func initShowSearchBarButton() {
+        
+        // Create and Constrain
         self.showSearchBarButton = UIButton(frame: .zero)
-        self.showSearchBarButton.contentEdgeInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
         self.addSubview(showSearchBarButton)
         self.sendSubviewToBack(showSearchBarButton)
         self.showSearchBarButton.addTarget(self, action: #selector(showSearchButtonDidTouchDown), for: .touchDown)
@@ -85,31 +144,16 @@ class SearchBarTitleView: UIView {
             maker.trailing.equalToSuperview().offset(-15.0)
         })
         self.showSearchBarButton.isHidden = false
+        
+        
+        // Customize Appearence
+        self.showSearchBarButton.contentEdgeInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
         let image = UIImage(systemName: "magnifyingglass")?.withRenderingMode(.alwaysTemplate)
         self.showSearchBarButton.setImage(image, for: .normal)
         self.showSearchBarButton.tintColor = .white
         self.showSearchBarButton.backgroundColor = ThemeColors.DARK_GRAY
         self.showSearchBarButton.layer.cornerRadius = 25.0
         self.showSearchBarButton.clipsToBounds = true
-        
-        
-        
-        // Initialize Title Label
-        self.titleLabel = UILabel()
-        self.titleLabel.text = "All"
-        self.titleLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 33.0)!
-        self.titleLabel.textColor = .white
-        self.titleLabel.backgroundColor = .clear
-        self.titleLabel.numberOfLines = 1
-        self.titleLabel.lineBreakMode = .byTruncatingTail
-        self.addSubview(self.titleLabel)
-        self.titleLabel.snp.makeConstraints({ maker in
-            maker.leading.equalToSuperview().offset(25.0)
-            maker.centerY.equalToSuperview()
-            maker.trailing.equalTo(self.showSearchBarButton.snp.leading).offset(-15.0)
-        })
-        
-        
         
     }
     
@@ -125,9 +169,18 @@ class SearchBarTitleView: UIView {
     Hides Title and Button
     */
     func showSearchBar() {
+        
+        // Animate the search bar out
         self.searchBar.isHidden = false
+        self.searchBar.transform = CGAffineTransform(scaleX: 0.0, y: 1.0)
+        UIView.animate(withDuration: 0.25, animations: {
+            self.searchBar.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+        })
+        
+        // Hide other subviews
         self.titleLabel.isHidden = true
         self.showSearchBarButton.isHidden = true
+        
         
         // Show keyboard for editing
         self.searchBar.becomeFirstResponder()
