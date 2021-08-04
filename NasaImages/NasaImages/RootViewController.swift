@@ -10,8 +10,8 @@ import UIKit
 class RootViewController: UIViewController {
     
     // Outlets
-    @IBOutlet weak var searchBar: UISearchBar!
-    var searchBarController: ImagesSearchBarController?
+    @IBOutlet weak var searchBarTitleView: SearchBarTitleView!
+
     
     @IBOutlet weak var imagesCollectionView: UICollectionView!
     var imagesCollectionViewController: ImagesCollectionViewController?
@@ -29,7 +29,7 @@ class RootViewController: UIViewController {
         self.initNavigation()
         
         // Make initial api call for images and loads imags into cache
-        self.getImages(searchTerm: "", page: 1)
+        self.getImages(searchTerm: self.searchBarTitleView.getText(), page: 1)
     }
     
     
@@ -49,9 +49,12 @@ class RootViewController: UIViewController {
             topPadding = window?.safeAreaInsets.top ?? 0.0
         }
         
-        let searchBarHeight = CGFloat(50.0)
+        let searchBarHeight = CGFloat(75.0)
         let topEdgeInset = searchBarHeight + topPadding
         let edgeInsets = UIEdgeInsets(top: topEdgeInset, left: 0.0, bottom: 0.0, right: 0.0)
+        
+        // Init SearchBarTitleView
+        
         
         // Init Collection View
         self.imagesCollectionViewController = ImagesCollectionViewController(collectionView: self.imagesCollectionView,
@@ -60,11 +63,11 @@ class RootViewController: UIViewController {
         // Set Callbacks
         self.imagesCollectionViewController?.didRefresh = {[weak self] in
             self?.currentPage = 1
-            self?.getImages(searchTerm: self?.searchBarController?.getText() ?? "", page: 1)
+            self?.getImages(searchTerm: self?.searchBarTitleView.getText() ?? "", page: 1)
         }
         
         self.imagesCollectionViewController?.didSelectImage = {[weak self] image in
-            self?.searchBarController?.endEditing(true)
+            self?.searchBarTitleView.hideSearchBar()
             self?.presentImageViewController(image: image)
         }
         
@@ -73,17 +76,17 @@ class RootViewController: UIViewController {
         }
         
         self.imagesCollectionViewController?.didScroll = {[weak self] in
-            self?.searchBarController?.endEditing(true)
+            self?.searchBarTitleView.hideSearchBar()
         }
         
         
-        // Init Search Bar
-        self.searchBarController = ImagesSearchBarController(searchBar: self.searchBar)
-        self.searchBarController?.didPressSearch = {[weak self] searchTerm in
+        // Init SearchBarTitleView
+        self.searchBarTitleView.didPressSearch = {[weak self] searchTerm in
             self?.handleDidPressSearch(searchTerm: searchTerm)
         }
         
-        self.view.backgroundColor = ThemeColors.DARK_BACKGROUND
+        
+        self.view.backgroundColor = .black
     }
     
     /*
@@ -170,7 +173,7 @@ class RootViewController: UIViewController {
     func getNextPage() {
         guard self.isRequestingNewImages == false else { return }
         self.currentPage += 1
-        self.getImages(searchTerm: self.searchBarController?.getText() ?? "", page: self.currentPage)
+        self.getImages(searchTerm: self.searchBarTitleView.getText(), page: self.currentPage)
     }
 }
 
